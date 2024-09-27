@@ -7,21 +7,35 @@ const Navbar = () => {
     <nav>
       <ul>
       <li className='icon'>
+        <Link href="./">
           <FaBeer/>
+        </Link>
         </li>
+        <div className='center'> 
+          <li>
+          <Link href="/" className='link'>
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link href="./altro" className='link'>
+              Altro
+            </Link>
+          </li>
+          <li>
+            <Link href="contatti" className='link'>
+            Contatti
+            </Link>
+          </li>
+        </div>
         <li>
-        <Link href="/">
-            Home
+          <Link href="./sign-in">
+            Sign in
           </Link>
         </li>
         <li>
-          <Link href="./altro">
-            Altro
-          </Link>
-        </li>
-        <li>
-          <Link href="contatti">
-          Contatti
+          <Link href="./sign-up">
+            Sign up
           </Link>
         </li>
       </ul>
@@ -41,8 +55,7 @@ const Navbar = () => {
         }
         li{
           color: white;
-          margin-right: 15px;
-          margin-left: -15px;
+          
           display: inline;
         }
         li a{
@@ -50,22 +63,34 @@ const Navbar = () => {
           text-decoration: none;
           font-weight: normal;
           
+          
           padding: 8px;
           padding-top: 3px;
           padding-bottom: 3px;
           border-radius: 15px;
         }
-        a:hover{
-          background-color: lightblue;
+        a:hover.link{
+          background-color: rgba(128, 128, 128, 0.7);
+        }
+        a:active.link{
+          background-color: rgba(128, 128, 128, 0.5);
+          
         }
         .icon{
+          padding-top: 5px;
           margin-right: auto;
         }
+        .center{
+          display: flex;
+          flex-grow: 1;
+          justify-content: center;
+        }
+        
         `}
       </style>
     </nav>
 
-    //1 2 6 7
+    //1 2 3 4 6
     
   )
 }
