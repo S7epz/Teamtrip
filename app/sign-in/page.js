@@ -1,19 +1,25 @@
+'use client'
+ 
+import { useRouter } from 'next/navigation'
 import { CgPassword } from "react-icons/cg";
 
 export default function signIn(){
 
-    const handleSubmit = (event) => {
+    function vai(){
+        event.preventDefault();
         
-        const email = formData.get("email");
-        const password = formData.get("password");
-    
-
-
+            let email = document.getElementById("email").value;
+            let passcode = document.f1.password.value;
+            const Cemail = "user@mail.com";
+            const Cpasscode = "1234";
+            
+            if(email == Cemail && passcode == Cpasscode){
+                document.getElementById("f1").submit();
+            }
+            
         
-
-        console.log("work");
-
     }
+
 
 
     return(
@@ -22,10 +28,11 @@ export default function signIn(){
                 <h2>
                     Login
                 </h2>
-                <form name="login" onSubmit={handleSubmit}>
-                    <input type="email" id="email" placeholder="email" size="30" required />
-                    <input type="password" id="password" placeholder="password" required />
-                    <input type="submit" value="submit" />
+                <form id="f1" name="f1" method="POST" action="/">
+                    <input type="email" name="email" id="email" placeholder="email" size="30" required />
+                    <input type="password" name="password" id="password" placeholder="password" required />
+                    <input type="submit" value="submit" onClick={vai} />
+                    <h1 id="h1" name="h1" style={{visibility:"hidden"}}>Mangai</h1>
                 </form>
                 
             </div>
@@ -49,6 +56,7 @@ export default function signIn(){
                 }
             `}
             </style>
+
         </>
         
     )
