@@ -1,14 +1,10 @@
-<<<<<<< HEAD
 'use client'
  
 import { useRouter } from 'next/navigation'
-=======
->>>>>>> teamtrip/main
 import { CgPassword } from "react-icons/cg";
 
 export default function signIn(){
 
-<<<<<<< HEAD
     function vai(){
         event.preventDefault();
         
@@ -25,21 +21,6 @@ export default function signIn(){
     }
 
 
-=======
-    const handleSubmit = (event) => {
-        
-        const email = formData.get("email");
-        const password = formData.get("password");
-    
-
-
-        
-
-        console.log("work");
-
-    }
-
->>>>>>> teamtrip/main
 
     return(
         <>
@@ -47,18 +28,11 @@ export default function signIn(){
                 <h2>
                     Login
                 </h2>
-<<<<<<< HEAD
                 <form id="f1" name="f1" method="POST" action="/">
                     <input type="email" name="email" id="email" placeholder="email" size="30" required />
                     <input type="password" name="password" id="password" placeholder="password" required />
                     <input type="submit" value="submit" onClick={vai} />
                     <h1 id="h1" name="h1" style={{visibility:"hidden"}}>Mangai</h1>
-=======
-                <form name="login" onSubmit={handleSubmit}>
-                    <input type="email" id="email" placeholder="email" size="30" required />
-                    <input type="password" id="password" placeholder="password" required />
-                    <input type="submit" value="submit" />
->>>>>>> teamtrip/main
                 </form>
                 
             </div>
@@ -82,10 +56,6 @@ export default function signIn(){
                 }
             `}
             </style>
-<<<<<<< HEAD
-
-=======
->>>>>>> teamtrip/main
         </>
         
     )
