@@ -2,6 +2,7 @@
  
 import { useRouter } from 'next/navigation'
 import { CgPassword } from "react-icons/cg";
+import { RiH1 } from 'react-icons/ri';
 
 export default function signIn(){
 
@@ -24,35 +25,73 @@ export default function signIn(){
 
     return(
         <>
-            <div className="login">
-                <h2>
+        <div className="container">
+        <div className="cardLayout">
+                <h1>
                     Login
-                </h2>
+                </h1>
                 <form id="f1" name="f1" method="POST" action="/">
-                    <input type="email" name="email" id="email" placeholder="email" size="30" required />
-                    <input type="password" name="password" id="password" placeholder="password" required />
-                    <input type="submit" value="submit" onClick={vai} />
-                    <h1 id="h1" name="h1" style={{visibility:"hidden"}}>Mangai</h1>
+                    <div className="auth"> 
+                        <p>E MAIL</p>
+                        <input type="email" name="email" id="email" placeholder="email" size="30" required />
+                        <p>PASSWORD</p>
+                        <input type="password" name="password" id="password" placeholder="password" required />
+                        <div id="extraDiv">
+                        <a href="./altro" id="collegamento">Password dimenticata?</a>
+                        
+                        <input type="submit" value="Login" onClick={vai} />
+                        </div>
+                        
+                    </div>
                 </form>
                 
             </div>
+        </div>
+            
             <style>
             {`
-                div.login{
-                    position: absolute;
-                    margin: auto;
-                    inset: 200px;
-                    width: 50%;
-                    border: 3px solid gray;
-                    padding: 8px;
-                    background: black;
-                    color: white;
-                    border-radius: 15px;
-                }
-                h2{
+                .container {
                     display: flex;
                     justify-content: center;
-                    padding-top: 15px;
+                    align-items: center;
+                    height: 70vh;
+                    border-radius: 5px;
+                }
+                div.cardLayout{
+                    display: flex;
+                    flex-direction: column;
+                    background: gray;
+                    //height: 50%;
+                    //width: 500px;
+                    padding: 20px 40px 50px;
+                    border-radius: 15px;
+                    //border-sizing: border-box;
+                }
+                p{
+                    color: white;
+                }
+                h1{
+                    color: white
+                }
+                .buttonSubmit{
+                    
+                    
+                    //text-align: right;
+                }
+                input[type=submit]{
+                    border: none;
+                    cursor: pointer;
+                    padding: 7px 14px;
+                    border-radius: 12px;
+                    margin-top: 10px;
+                }
+                .collegamento{
+                    color:white;
+                    
+                }
+                .extraDiv{
+                    display: flex;
+                    flex-direction: column;
                 }
             `}
             </style>
