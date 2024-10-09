@@ -1,101 +1,68 @@
 'use client'
  
-import { useRouter } from 'next/navigation'
-import { CgPassword } from "react-icons/cg";
-import { RiH1 } from 'react-icons/ri';
+import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
+import { Button } from "@/app/components/ui/button"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+
 
 export default function signIn(){
 
-    function vai(){
-        event.preventDefault();
-        
-            let email = document.getElementById("email").value;
-            let passcode = document.f1.password.value;
-            const Cemail = "user@mail.com";
-            const Cpasscode = "1234";
-            
-            if(email == Cemail && passcode == Cpasscode){
-                document.getElementById("f1").submit();
-            }
-            
-        
+  const router = useRouter();
+
+    async function vai(){
+      event.preventDefault();
+      const mail="user@mail.com";
+      const pass="1234";
+
+      let email = document.f1.email.value;
+      let passcode = document.f1.password.value;
+
+      if(mail == email && pass == passcode){
+        router.push("/");
+      }
+      
     }
-
-
 
     return(
         <>
-        <div className="container">
-        <div className="cardLayout">
-                <h1>
-                    Login
-                </h1>
-                <form id="f1" name="f1" method="POST" action="/">
-                    <div className="auth"> 
-                        <p>E MAIL</p>
-                        <input type="email" name="email" id="email" placeholder="email" size="30" required />
-                        <p>PASSWORD</p>
-                        <input type="password" name="password" id="password" placeholder="password" required />
-                        <div id="extraDiv">
-                        <a href="./altro" id="collegamento">Password dimenticata?</a>
-                        
-                        <input type="submit" value="Login" onClick={vai} />
-                        </div>
-                        
-                    </div>
-                </form>
-                
-            </div>
-        </div>
+        <div className="flex items-center justify-center h-screen">
+        <form name="f1" >
+        <Card className="w-[350px]">
+          <CardHeader>
+            <CardTitle>Login</CardTitle>
+          </CardHeader>
+          <CardContent>
             
-            <style>
-            {`
-                .container {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    height: 70vh;
-                    border-radius: 5px;
-                }
-                div.cardLayout{
-                    display: flex;
-                    flex-direction: column;
-                    background: gray;
-                    //height: 50%;
-                    //width: 500px;
-                    padding: 20px 40px 50px;
-                    border-radius: 15px;
-                    //border-sizing: border-box;
-                }
-                p{
-                    color: white;
-                }
-                h1{
-                    color: white
-                }
-                .buttonSubmit{
-                    
-                    
-                    //text-align: right;
-                }
-                input[type=submit]{
-                    border: none;
-                    cursor: pointer;
-                    padding: 7px 14px;
-                    border-radius: 12px;
-                    margin-top: 10px;
-                }
-                .collegamento{
-                    color:white;
-                    
-                }
-                .extraDiv{
-                    display: flex;
-                    flex-direction: column;
-                }
-            `}
-            </style>
-        </>
+              <Input name="email" placeholder="E-mail" required/>
+              <Input name="password" className="mt-5" placeholder="Password" required/>
+            
+          </CardContent>
+          <CardFooter className="flex !items-end w-full">
+            <Button type="submit" onClick={vai}>
+              Login
+            </Button>
+          </CardFooter>
+        </Card>
+        </form>
+        </div>
+    </>
         
     )
 }
