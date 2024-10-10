@@ -1,98 +1,74 @@
-import Link from 'next/link';
-import altro from '../altro/page.js'
-import { FaBeer } from 'react-icons/fa';
+'use client'
+import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button} from "@nextui-org/react";
 
-const Navbar = () => {
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+
+import { MoonIcon, SunIcon } from "@radix-ui/react-icons"
+import { useTheme } from "next-themes"
+
+export default function NavbarComponent() {
+  const { setTheme } = useTheme();
   return (
-    <nav>
-      <ul>
-      <li className='icon'>
-        <Link href="./">
-          <FaBeer/>
-        </Link>
-        </li>
-        <div className='center'> 
-          <li>
-          <Link href="/" className='link'>
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link href="./altro" className='link'>
-              Altro
-            </Link>
-          </li>
-          <li>
-            <Link href="contatti" className='link'>
-            Contatti
-            </Link>
-          </li>
-        </div>
-        <li>
-          <Link href="./sign-in">
-            Sign in
-          </Link>
-        </li>
-        <li>
-          <Link href="./sign-up">
-            Sign up
-          </Link>
-        </li>
-      </ul>
-      <style>{`
-        nav{
-          background: #333;
-          padding: 0.2rem;
-          border-radius: 25px;
-        }
-        ul{
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          list-style-type: none;
+    <div className="flex justify-center w-full border-b border-gray-200">
+    <Navbar isBordered variant="floating" className="w-full max-w-screen-lg">
+      <NavbarBrand>
+        <p className="font-bold text-inherit pl-4">Teamtrip</p>
+      </NavbarBrand>
 
-          
-        }
-        li{
-          color: white;
-          
-          display: inline;
-        }
-        li a{
-          color: white;
-          text-decoration: none;
-          font-weight: normal;
-          
-          
-          padding: 8px;
-          padding-top: 3px;
-          padding-bottom: 3px;
-          border-radius: 15px;
-        }
-        a:hover.link{
-          background-color: rgba(128, 128, 128, 0.7);
-        }
-        a:active.link{
-          background-color: rgba(128, 128, 128, 0.5);
-          
-        }
-        .icon{
-          padding-top: 5px;
-          margin-right: auto;
-        }
-        .center{
-          display: flex;
-          flex-grow: 1;
-          justify-content: center;
-        }
+      <NavbarContent className="hidden sm:flex gap-4" justify="center">
+        <NavbarItem>
+          <Link color="foreground" href="/">
+            Features
+          </Link>
+        </NavbarItem>
+        <NavbarItem>
+          <Link href="/" aria-current="page">
+            Customers
+          </Link>
+        </NavbarItem>
+      </NavbarContent>
+
+      <NavbarContent justify="end">
+
         
-        `}
-      </style>
-    </nav>
+        <NavbarItem>
+          <Button as={Link} color="primary" href="/sign-in" variant="flat">
+            Sign Up
+          </Button>
+        </NavbarItem>
 
-    //1 2 3 4 6
-    
-  )
+
+
+        <NavbarItem>
+        <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline" size="icon">
+          <SunIcon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+          <MoonIcon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+          <span className="sr-only">Toggle theme</span>
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end">
+        <DropdownMenuItem onClick={() => setTheme("light")}>
+          Light
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme("dark")}>
+          Dark
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme("system")}>
+          System
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+        </NavbarItem>
+
+      </NavbarContent>
+    </Navbar>
+    </div>
+  );
 }
-
-export default Navbar;
