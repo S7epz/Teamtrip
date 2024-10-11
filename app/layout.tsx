@@ -17,13 +17,14 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body>
         
-        <Navbar/>
+        
         <ThemeProvider
             attribute="class"
-            defaultTheme="system"
+            defaultTheme="light"
             enableSystem
             disableTransitionOnChange
           >
+            <Navbar/>
             {children}
           </ThemeProvider>
       </body>

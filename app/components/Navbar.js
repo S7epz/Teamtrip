@@ -11,8 +11,10 @@ import {
 import { MoonIcon, SunIcon } from "@radix-ui/react-icons"
 import { useTheme } from "next-themes"
 
+
+
 export default function NavbarComponent() {
-  const { setTheme } = useTheme();
+  const { setTheme } = useTheme()
   return (
     <div className="flex justify-center w-full border-b border-gray-200">
     <Navbar isBordered variant="floating" className="w-full max-w-screen-lg">
@@ -21,16 +23,7 @@ export default function NavbarComponent() {
       </NavbarBrand>
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
-        <NavbarItem>
-          <Link color="foreground" href="/">
-            Features
-          </Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link href="/" aria-current="page">
-            Customers
-          </Link>
-        </NavbarItem>
+        
       </NavbarContent>
 
       <NavbarContent justify="end">

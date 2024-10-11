@@ -1,14 +1,43 @@
-import { redirect } from "next/navigation";
-import Link from "next/link";
-import { FaBeer } from 'react-icons/fa';
-import NavbarComponent from "./components/Navbar.js";
+'use client'
 
+import { useState } from 'react'
+ 
 export default async function Home() {
+
+  const [isAuth, setIsAuth] = useState(false);
+
+  console.log(isAuth);
+
   return(
   <>
-    <h1>
-      Home page
-    </h1>
+    {
+      isAuth ? 
+      (
+        <p>logged</p>
+      )
+      :
+      (
+        <p>not logged</p>
+      )
+    }
   </>
   )
+
+  function isAuthentic(){
+    return(
+    <>
+      <p>Home page</p>
+    </>
+    )
+    
+  }
+
+  function notAuth(){
+    return(
+      <>
+      <p>not logged in</p>
+    </>
+    )
+    
+  } 
 }

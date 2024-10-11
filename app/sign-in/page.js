@@ -1,7 +1,9 @@
 'use client'
- 
+
 import { redirect } from "next/navigation";
 import { useRouter } from "next/navigation";
+import { useState } from 'react'
+
 import { Button } from "@/app/components/ui/button"
 import {
   Card,
@@ -21,47 +23,80 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 
+import Home from '@/app/page'
 
 export default function signIn(){
-
   const router = useRouter();
+  const [isAuth, setIsAuth] = useState(false);
 
-    async function vai(){
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+    function login(event){
       event.preventDefault();
-      const mail="user@mail.com";
-      const pass="1234";
+      const validMail="user@mail.com";
+      const validPass="1234";
 
-      let email = document.f1.email.value;
-      let passcode = document.f1.password.value;
+      
 
-      if(mail == email && pass == passcode){
+      if(email == validMail && password == validPass){
+        setIsAuth(true);
+        
+
         router.push("/");
+      }else{
+        setIsAuth(false);
+        alert("login fallito");
       }
       
     }
+    
 
     return(
         <>
-        <div className="flex items-center justify-center h-screen">
-        <form name="f1" >
-        <Card className="w-[350px]">
-          <CardHeader>
-            <CardTitle>Login</CardTitle>
-          </CardHeader>
-          <CardContent>
-            
-              <Input name="email" placeholder="E-mail" required/>
-              <Input name="password" className="mt-5" placeholder="Password" required/>
-            
-          </CardContent>
-          <CardFooter className="flex !items-end w-full">
-            <Button type="submit" onClick={vai}>
-              Login
-            </Button>
-          </CardFooter>
-        </Card>
-        </form>
-        </div>
+        {
+          !isAuth ? 
+          (
+            <div className="flex items-center justify-center h-screen">
+            <form name="f1" onSubmit={login}>
+            <Card className="w-[350px]">
+              <CardHeader>
+                <CardTitle>Login</CardTitle>
+              </CardHeader>
+              <CardContent>
+                
+                  <Input 
+                    name="email" 
+                    placeholder="E-mail" 
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                  />
+                  <Input 
+                    name="password" 
+                    className="mt-5" 
+                    placeholder="Password" 
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                  />
+                
+              </CardContent>
+              <CardFooter className="flex !items-end w-full">
+                <Button type="submit">
+                  Login
+                </Button>
+              </CardFooter>
+            </Card>
+            </form>
+            </div>
+          )
+          :
+          (
+            <p>Redirecting to home...</p>
+          )
+        }
+        
     </>
         
     )
