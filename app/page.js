@@ -2,42 +2,13 @@
 
 import { useState } from 'react'
  
-export default async function Home() {
-
-  const [isAuth, setIsAuth] = useState(false);
-
-  console.log(isAuth);
+export default function Home() {
 
   return(
   <>
     {
-      isAuth ? 
-      (
-        <p>logged</p>
-      )
-      :
-      (
-        <p>not logged</p>
-      )
+      <p>Home page</p>
     }
   </>
   )
-
-  function isAuthentic(){
-    return(
-    <>
-      <p>Home page</p>
-    </>
-    )
-    
-  }
-
-  function notAuth(){
-    return(
-      <>
-      <p>not logged in</p>
-    </>
-    )
-    
-  } 
 }

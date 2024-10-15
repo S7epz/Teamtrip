@@ -16,15 +16,14 @@ import { useTheme } from "next-themes"
 export default function NavbarComponent() {
   const { setTheme } = useTheme()
   return (
-    <div className="flex justify-center w-full border-b border-gray-200">
-    <Navbar isBordered variant="floating" className="w-full max-w-screen-lg">
+    <div className="flex w-screen border-b border-gray-200">
+    <Navbar isBordered className="max-w-screen-lg">
       <NavbarBrand>
         <p className="font-bold text-inherit pl-4">Teamtrip</p>
       </NavbarBrand>
 
-      <NavbarContent className="hidden sm:flex gap-4" justify="center">
-        
-      </NavbarContent>
+      <NavbarContent className="hidden sm:flex gap-4 flex-grow" />
+
 
       <NavbarContent justify="end">
 

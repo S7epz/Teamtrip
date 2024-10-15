@@ -23,11 +23,8 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 
-import Home from '@/app/page'
-
 export default function signIn(){
   const router = useRouter();
-  const [isAuth, setIsAuth] = useState(false);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -37,15 +34,9 @@ export default function signIn(){
       const validMail="user@mail.com";
       const validPass="1234";
 
-      
-
       if(email == validMail && password == validPass){
-        setIsAuth(true);
-        
-
         router.push("/");
       }else{
-        setIsAuth(false);
         alert("login fallito");
       }
       
@@ -54,9 +45,6 @@ export default function signIn(){
 
     return(
         <>
-        {
-          !isAuth ? 
-          (
             <div className="flex items-center justify-center h-screen">
             <form name="f1" onSubmit={login}>
             <Card className="w-[350px]">
@@ -82,21 +70,16 @@ export default function signIn(){
                   />
                 
               </CardContent>
+
               <CardFooter className="flex !items-end w-full">
                 <Button type="submit">
                   Login
                 </Button>
+
               </CardFooter>
             </Card>
             </form>
             </div>
-          )
-          :
-          (
-            <p>Redirecting to home...</p>
-          )
-        }
-        
     </>
         
     )
