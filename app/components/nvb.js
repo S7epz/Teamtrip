@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import altro from '../altro/page.js'
 import { FaBeer } from 'react-icons/fa';
 
 
