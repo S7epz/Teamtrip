@@ -1,14 +1,19 @@
 'use client'
 
-import { useState } from 'react'
- 
+import { useAuth } from '@/lib/AuthContext'
+
+
 export default function Home() {
+  const { isAuth } = useAuth();
 
   return(
   <>
-    {
-      <p>Home page</p>
-    }
+  <div>
+  <h1>Home page</h1>
+    {isAuth ? <p>logged in </p> : <p>Not logged in</p>}
+  </div>
+
   </>
+  
   )
 }

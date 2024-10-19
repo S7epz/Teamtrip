@@ -1,7 +1,6 @@
 'use client'
 
 import { redirect } from "next/navigation";
-import { useRouter } from "next/navigation";
 import { useState } from 'react'
 
 import { Button } from "@/app/components/ui/button"
@@ -23,20 +22,28 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 
+import Home from '@/app/page'
+import { useAuth } from "@/lib/AuthContext"
+
 export default function signIn(){
   const router = useRouter();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const { isAuth, setIsAuth } = useAuth();
+
     function login(event){
       event.preventDefault();
       const validMail="user@mail.com";
       const validPass="1234";
 
+      
       if(email == validMail && password == validPass){
-        router.push("/");
+        setIsAuth(true);
+        redirect("/");
       }else{
+        setIsAuth(false);
         alert("login fallito");
       }
       
@@ -45,7 +52,7 @@ export default function signIn(){
 
     return(
         <>
-            <div className="flex items-center justify-center h-screen">
+          <div className="flex items-center justify-center h-screen">
             <form name="f1" onSubmit={login}>
             <Card className="w-[350px]">
               <CardHeader>
@@ -55,6 +62,7 @@ export default function signIn(){
                 
                   <Input 
                     name="email" 
+                    type="email"
                     placeholder="E-mail" 
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
@@ -62,6 +70,7 @@ export default function signIn(){
                   />
                   <Input 
                     name="password" 
+                    type="password"
                     className="mt-5" 
                     placeholder="Password" 
                     value={password}

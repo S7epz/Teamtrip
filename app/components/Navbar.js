@@ -10,7 +10,7 @@ import {
 
 import { MoonIcon, SunIcon } from "@radix-ui/react-icons"
 import { useTheme } from "next-themes"
-
+import { useAuth } from "@/app/sign-in/page"
 
 
 export default function NavbarComponent() {
@@ -27,6 +27,17 @@ export default function NavbarComponent() {
 
       <NavbarContent justify="end">
 
+      <NavbarItem>
+          <Button as={Link} href="/" variant="flat">
+            Home
+          </Button>
+        </NavbarItem>
+
+        <NavbarItem>
+          <Button as={Link} href="/altro" variant="flat">
+            Altro
+          </Button>
+        </NavbarItem>
         
         <NavbarItem>
           <Button as={Link} color="primary" href="/sign-in" variant="flat">
