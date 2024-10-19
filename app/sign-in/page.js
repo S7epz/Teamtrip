@@ -1,13 +1,12 @@
 'use client'
 
 import { redirect } from "next/navigation";
-import { useState } from 'react'
+//import { useState } from 'react'
 
 import { Button } from "@/app/components/ui/button"
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -17,7 +16,7 @@ import { Input } from "@/components/ui/input"
 
 
 export default function signIn(){
-  const [email, setEmail] = useState('');
+  /*const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
     function login(event){
@@ -32,8 +31,12 @@ export default function signIn(){
         alert("login fallito");
       }
       
-    }
+    }*/
     
+    function login(){
+      event.preventDefault();
+      redirect("/");
+    }
 
     return(
         <>
@@ -49,8 +52,8 @@ export default function signIn(){
                     name="email" 
                     type="email"
                     placeholder="E-mail" 
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    //value={email}
+                    //onChange={(e) => setEmail(e.target.value)}
                     required
                   />
                   <Input 
@@ -58,8 +61,8 @@ export default function signIn(){
                     type="password"
                     className="mt-5" 
                     placeholder="Password" 
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    //value={password}
+                    //onChange={(e) => setPassword(e.target.value)}
                     required
                   />
                 

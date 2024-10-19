@@ -10,7 +10,6 @@ import {
 
 import { MoonIcon, SunIcon } from "@radix-ui/react-icons"
 import { useTheme } from "next-themes"
-import { useAuth } from "@/app/sign-in/page"
 
 
 export default function NavbarComponent() {
