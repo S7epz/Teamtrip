@@ -2,7 +2,7 @@ import Navbar from "./components/Navbar";
 import './global.css';
 import * as React from "react"
 import { ThemeProvider } from "./components/theme-provider"
-import { AuthProvider } from "@/lib/AuthContext"
+
 
 export const metadata = {
   title: 'Teamtrip',
@@ -26,10 +26,10 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <AuthProvider>
+
             <Navbar/>
             {children}
-            </AuthProvider>
+
           </ThemeProvider>
 
           

@@ -14,15 +14,11 @@ import {
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 
-import { useAuth } from "@/lib/AuthContext"
+
 
 export default function signIn(){
-  const router = useRouter();
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
-  const { isAuth, setIsAuth } = useAuth();
 
     function login(event){
       event.preventDefault();
@@ -31,10 +27,8 @@ export default function signIn(){
 
       
       if(email == validMail && password == validPass){
-        setIsAuth(true);
         redirect("/");
       }else{
-        setIsAuth(false);
         alert("login fallito");
       }
       
