@@ -1,19 +1,10 @@
-'use client'
+
 import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button} from "@nextui-org/react";
-
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-
-import { MoonIcon, SunIcon } from "@radix-ui/react-icons"
-import { useTheme } from "next-themes"
-
+import  ThemeToggle  from "@/components/themeToggle"
 
 export default function NavbarComponent() {
-  const { setTheme } = useTheme()
+
+
   return (
     <div className="flex w-screen border-b border-gray-200">
     <Navbar isBordered className="max-w-screen-lg">
@@ -24,7 +15,7 @@ export default function NavbarComponent() {
       <NavbarContent className="hidden sm:flex gap-4 flex-grow" />
 
 
-      <NavbarContent justify="end">
+      <NavbarContent className="justify-end">
 
       <NavbarItem>
           <Button as={Link} href="/" variant="flat">
@@ -37,39 +28,24 @@ export default function NavbarComponent() {
             Altro
           </Button>
         </NavbarItem>
-        
-        <NavbarItem>
-          <Button as={Link} color="primary" href="/sign-in" variant="flat">
-            Sign Up
-          </Button>
-        </NavbarItem>
 
+            <NavbarItem>
+              <Button as={Link} color="primary" variant="flat">
+                Logout
+              </Button>
+            </NavbarItem>
 
-
-        <NavbarItem>
-        <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="icon">
-          <SunIcon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-          <MoonIcon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-          <span className="sr-only">Toggle theme</span>
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setTheme("light")}>
-          Light
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("dark")}>
-          Dark
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("system")}>
-          System
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
-        </NavbarItem>
-
+            <NavbarItem>
+              <Button as={Link} color="primary" href="/sign-in" variant="flat" >
+                Sign Up
+              </Button>
+          </NavbarItem>
+            
+          <NavbarItem>
+            <ThemeToggle />
+          </NavbarItem>
       </NavbarContent>
+
     </Navbar>
     </div>
   );

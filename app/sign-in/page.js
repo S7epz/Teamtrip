@@ -1,7 +1,5 @@
-'use client'
 
-import { redirect } from "next/navigation";
-//import { useState } from 'react'
+import { login, getSession, logout } from "@/app/session";
 
 import { Button } from "@/app/components/ui/button"
 import {
@@ -15,67 +13,80 @@ import { Input } from "@/components/ui/input"
 
 
 
-export default function signIn(){
-  /*const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-    function login(event){
-      event.preventDefault();
-      const validMail="user@mail.com";
-      const validPass="1234";
-
-      
-      if(email == validMail && password == validPass){
-        redirect("/");
-      }else{
-        alert("login fallito");
-      }
-      
-    }*/
-    
-    function login(){
-      event.preventDefault();
-      redirect("/");
-    }
-
+export default async function signIn(){
+  const session = await getSession();
     return(
         <>
           <div className="flex items-center justify-center h-screen">
-            <form name="f1" onSubmit={login}>
+            
+
             <Card className="w-[350px]">
               <CardHeader>
-                <CardTitle>Login</CardTitle>
+
+                <CardTitle>
+                  Login
+                </CardTitle>
+
               </CardHeader>
+              <form 
+                  action={ async (formData) => {
+                      'use server'
+                      await login(formData);
+                      //if(!session)
+                        //redirect("/");
+                    }
+                  }
+                >
               <CardContent>
                 
-                  <Input 
-                    name="email" 
+                  
+                  <Input // Email input 
                     type="email"
+                    name="email"
                     placeholder="E-mail" 
-                    //value={email}
-                    //onChange={(e) => setEmail(e.target.value)}
                     required
                   />
-                  <Input 
-                    name="password" 
+
+                  <Input // Password input
                     type="password"
+                    name="password"
                     className="mt-5" 
                     placeholder="Password" 
-                    //value={password}
-                    //onChange={(e) => setPassword(e.target.value)}
                     required
                   />
-                
+                  
               </CardContent>
 
-              <CardFooter className="flex !items-end w-full">
-                <Button type="submit">
+              <CardFooter className="flex !items-end w-full"> 
+                <Button // Submit the form
+                  type="submit"
+                >
                   Login
                 </Button>
 
               </CardFooter>
+              </form>
             </Card>
+
+            
+            
+            <form
+              action={ async () => {
+                'use server'
+                await logout();
+              }
+              }
+            >
+              <Button type="submit">
+                Logout
+              </Button>
             </form>
+            
+            <div>
+              <pre>{JSON.stringify(session)}</pre>
+            </div>
+            
+
             </div>
     </>
         
