@@ -1,5 +1,5 @@
 
-import { login, getSession, logout } from "@/app/session";
+import { login, getSession } from "@/app/session";
 
 import { Button } from "@/app/components/ui/button"
 import {
