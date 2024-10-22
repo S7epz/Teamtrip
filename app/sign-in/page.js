@@ -10,7 +10,7 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
-
+import { redirect } from "next/navigation";
 
 
 export default async function signIn(){
@@ -32,8 +32,8 @@ export default async function signIn(){
                   action={ async (formData) => {
                       'use server'
                       await login(formData);
-                      //if(!session)
-                        //redirect("/");
+                      if(!session)
+                        redirect("/");
                     }
                   }
                 >
@@ -67,26 +67,6 @@ export default async function signIn(){
               </CardFooter>
               </form>
             </Card>
-
-            
-            
-            <form
-              action={ async () => {
-                'use server'
-                await logout();
-              }
-              }
-            >
-              <Button type="submit">
-                Logout
-              </Button>
-            </form>
-            
-            <div>
-              <pre>{JSON.stringify(session)}</pre>
-            </div>
-            
-
             </div>
     </>
         
