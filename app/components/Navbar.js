@@ -3,55 +3,50 @@ import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button} from "@nex
 import  ThemeToggle  from "@/components/themeToggle"
 import { getSession, logout } from "@/app/session";
 import { redirect } from "next/navigation";
+import { Style } from "@/app/components/NavStyle.css";
 
 export default async function NavbarComponent() {
   const session = await getSession();
 
   return (
-    <div className="flex w-screen border-b border-gray-200">
-    <Navbar isBordered className=" justify-end">
-      <NavbarBrand>
-        <Link className="font-bold text-inherit pl-4" href="/">Teamtrip</Link>
-      </NavbarBrand>
-
-      
-
-
-      <NavbarContent className="mr-2">
+    <div className="navcontainer">
+    <Navbar className="navcontent">
+      <NavbarContent> 
+      <Link className="navcontent pr-4" href="/">Teamtrip</Link>
 
         <NavbarItem>
-          <Button as={Link} href="/altro" variant="flat">
+          <Button as={Link} href="/altro" variant="flat" className="navcontent">
             Altro
           </Button>
         </NavbarItem>
-        { session? (
+         {session? (
           <form 
           action={ async () => {
               'use server'
               await logout();
-              redirect('/sign-in');
+              redirect('/');
             }
           }
         >
           <NavbarItem>
-            <Button color="primary" variant="flat" type="submit">
+            <Button color="primary" type="submit" variant="flat" className="navcontent">
               Logout
             </Button>
           </NavbarItem>
         </form>
-        ) : (
+        
+         ):(
+
           <NavbarItem>
-              <Button as={Link} color="primary" href="/sign-in" variant="flat" >
-                Sign In
+              <Button as={Link} color="primary" href="/login" variant="flat" className="navcontent">
+                login
               </Button>
           </NavbarItem>
         )
         
-        }
+         }
                 
 
-            
-            
           <NavbarItem>
             <ThemeToggle />
           </NavbarItem>

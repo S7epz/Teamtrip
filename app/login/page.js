@@ -12,12 +12,14 @@ import {
 import { Input } from "@/components/ui/input"
 import { redirect } from "next/navigation";
 
+import { Link } from "@nextui-org/react";
 
 export default async function signIn(){
   const session = await getSession();
     return(
         <>
-          <div className="flex items-center justify-center h-screen">
+        {!session? (
+            <div className="flex items-center justify-center h-screen">
             
 
             <Card className="w-[350px]">
@@ -56,6 +58,9 @@ export default async function signIn(){
                   />
                   
               </CardContent>
+                  <Link href="sign-up" className="pl-6 pb-1 hover:underline">
+                    Not registered?
+                  </Link>
 
               <CardFooter className="flex !items-end w-full"> 
                 <Button // Submit the form
@@ -68,6 +73,12 @@ export default async function signIn(){
               </form>
             </Card>
             </div>
+          ):(
+            redirect('/')
+            
+          )
+        }
+          
     </>
         
     )
