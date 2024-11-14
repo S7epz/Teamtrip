@@ -9,9 +9,7 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
-import { redirect } from "next/navigation";
 
-import { Link } from "@nextui-org/react";
 
 export default function signUp(){
     return(

@@ -1,5 +1,5 @@
 
-import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button} from "@nextui-org/react";
+import {Navbar, NavbarContent, NavbarItem, Link, Button} from "@nextui-org/react";
 import  ThemeToggle  from "@/components/themeToggle"
 import { getSession, logout } from "@/app/session";
 import { redirect } from "next/navigation";
@@ -7,7 +7,7 @@ import { Style } from "@/app/components/NavStyle.css";
 
 export default async function NavbarComponent() {
   const session = await getSession();
-
+  Style;
   return (
     <div className="navcontainer">
     <Navbar className="navcontent">
